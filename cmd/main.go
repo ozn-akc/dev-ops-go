@@ -6,13 +6,10 @@ import (
 	"log"
 	"net/http"
 	"strconv"
-	"time"
 
-	"github.com/golang-jwt/jwt"
 	"github.com/gorilla/mux"
+	"github.com/user/repo/pkg"
 )
-
-var secretKey = []byte("secret-key")
 
 type Product struct {
 	ID    int     `json:"id"`
@@ -55,7 +52,7 @@ func authLoginHandler(w http.ResponseWriter, r *http.Request) {
 	// For simplicity, we'll use a hardcoded username and password
 	// This should be replaced with a proper authentication mechanism
 	if username == "user" && password == "pass" {
-		token, err := createToken(username)
+		token, err := pkg.CreateToken(username)
 
 		if err != nil {
 			w.WriteHeader(http.StatusInternalServerError)
@@ -132,36 +129,13 @@ func checkoutPlaceOrderHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if verifyToken(token) {
+	if pkg.VerifyToken(token) {
 		// In this simple example, we'll just return a success message
 		w.Write([]byte(`{"message": "Order placed successfully"}`))
 	} else {
 		w.WriteHeader(http.StatusUnauthorized)
 		w.Write([]byte(`{"error": "Invalid token"}`))
 	}
-}
-
-func createToken(username string) (string, error) {
-	token := jwt.NewWithClaims(jwt.SigningMethodHS256,
-		jwt.MapClaims{
-			"username": username,
-			"exp":      time.Now().Add(time.Hour * 24).Unix(),
-		})
-
-	tokenString, err := token.SignedString(secretKey)
-	if err != nil {
-		return "", err
-	}
-
-	return tokenString, nil
-}
-
-func verifyToken(tokenString string) bool {
-	token, err := jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) {
-		return secretKey, nil
-	})
-
-	return err == nil && token.Valid
 }
 
 func findProductByID(products []Product, id int) *Product {

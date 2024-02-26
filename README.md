@@ -141,3 +141,25 @@ VerifyToken überprüft, ob das gegebene JWT-Token gültig ist.
 #### Rückgabewerte
 
 - `bool`: true, wenn das Token gültig ist, sonst false.
+
+## Dockerfile
+
+This Dockerfile is used to build a Docker image for running the Go application. It consists of two stages: the build stage and the production stage.
+
+### Build Stage
+
+- **Base Image**: This stage starts from a base image containing the Go runtime (`golang:1.22.0`).
+- **Working Directory**: Sets the current working directory inside the container to `/app`.
+- **Copy Dependencies**: Copies the `go.mod` and `go.sum` files into the working directory.
+- **Download Dependencies**: Downloads all dependencies using `go mod download`.
+- **Copy Source Code**: Copies the source code from the current directory into the working directory.
+- **Build Application**: Builds the Go application using `CGO_ENABLED=0 go build -o main cmd/main.go`.
+
+### Production Stage
+
+- **Base Image**: This stage starts from a lightweight Alpine Linux image (`alpine:3.19.1`).
+- **Copy Executable**: Copies the built executable from the build stage into the production stage.
+- **Expose Port**: Exposes port 8080 to allow external connections to the application.
+- **Entry Point**: Defines the entry point for the container as `./main`, which runs the built executable.
+
+This Dockerfile enables easy deployment and distribution of the Go application in a containerized environment.

@@ -1,6 +1,8 @@
 # Start from a base image containing the Go runtime
 FROM golang:1.22.0 AS build
 
+
+ARG Service_Name
 # Set the Current Working Directory inside the container
 WORKDIR /app
 
@@ -15,7 +17,7 @@ RUN go mod download
 COPY . .
 
 # Build the Go app
-RUN CGO_ENABLED=0 go build -o main cmd/main.go 
+RUN CGO_ENABLED=0 go build -o main ./{Service_Name}/cmd/main.go 
 
 FROM alpine:3.19.1 AS production
 

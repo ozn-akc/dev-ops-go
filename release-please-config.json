@@ -1,0 +1,19 @@
+{
+    "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+    "release-type": "simple",
+    "include-v-in-tag": false,
+    "packages": {
+        "auth-service": {
+            "package-name": "auth-service",
+            "release-type": "go"
+        },
+        "product-service": {
+            "package-name": "product-service",
+            "release-type": "go"
+        },
+        "checkout-service": {
+            "package-name": "checkout-service",
+            "release-type": "go"
+        }
+    }
+}

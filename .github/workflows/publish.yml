@@ -3,7 +3,7 @@ name: Notify on New Tag
 on:
   push:
     tags:
-      - 'v*' # Trigger the workflow on tags starting with 'v'
+      - v1.**
 
 jobs:
   notify:

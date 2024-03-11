@@ -3,7 +3,7 @@ name: Docker Build and Push
 on:
   push:
     tags:
-      - "[A-Za-z0-9]+-service-[0-9]+.[0-9]+.[0-9]"
+      - "*"
 
 jobs:
   docker:

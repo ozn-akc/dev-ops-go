@@ -6,7 +6,7 @@ test:
 	$(GO_CMD) test -v ./...
 
 build:
-	$(GO_CMD) build -o main ./cmd/main.go
-
+	$(GO_CMD) build -o main ./$(service)/cmd/main.go
+	
 clean:
 	rm -f main

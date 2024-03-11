@@ -17,7 +17,7 @@ RUN go mod download
 COPY . .
 
 # Build the Go app
-RUN CGO_ENABLED=0 go build -o main ./{Service_Name}/cmd/main.go 
+RUN CGO_ENABLED=0 go build -o main ./$Service_Name/cmd/main.go 
 
 FROM alpine:3.19.1 AS production
 

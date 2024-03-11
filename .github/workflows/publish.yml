@@ -4,11 +4,3 @@ on:
   push:
     tags:
       - v1.**
-
-jobs:
-  docker:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get service name and version
-        id: service
-        run: echo Hallo

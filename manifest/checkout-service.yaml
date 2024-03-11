@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: checkout-service
+spec:
+  selector:
+    app.kubernetes.io/name: checkout-service-app
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 9376

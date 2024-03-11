@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product-service-app
+  labels:
+    app: product-service-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app:  product-service-app
+  template:
+    metadata:
+      labels:
+        app: product-service-app
+    spec:
+      containers:
+      - name: product-service
+        image: svnelv/product-service:latest
+        ports:
+        - containerPort: 8080

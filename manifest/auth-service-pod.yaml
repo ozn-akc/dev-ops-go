@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: product-service-app
+spec:
+  containers:
+  - name: product-service
+    image: svnelv/product-service:latest
+    ports:
+    - containerPort: 8080

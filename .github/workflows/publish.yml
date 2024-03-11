@@ -1,6 +1,23 @@
-name: Docker Build and Push
+name: Notify on New Tag
 
 on:
   push:
     tags:
-      - v1.**
+      - 'v*' # Trigger the workflow on tags starting with 'v'
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+      
+      - name: Notify
+        if: startsWith(github.ref, 'refs/tags/v') # Only notify if the tag starts with 'v'
+        run: |
+          echo "A new tag has been created: ${{ github.ref }}"
+          echo "Commit message: ${{ github.event.head_commit.message }}"
+          echo "By: ${{ github.actor }}"
+          # Replace the following line with your notification method, e.g., sending an email, Slack message, etc.
+          echo "Send notification to your desired platform"

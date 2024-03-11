@@ -38,5 +38,5 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ${{ github.actor }}/${{ steps.service.outputs.service }}:latest
-            ${{ github.actor }}/${{ steps.service.outputs.service }}:${{ steps.service.outputs.version }}
+            ${{ secrets.DOCKER_USERNAME }}/${{ steps.service.outputs.service }}:latest
+            ${{ secrets.DOCKER_USERNAME }}/${{ steps.service.outputs.service }}:${{ steps.service.outputs.version }}

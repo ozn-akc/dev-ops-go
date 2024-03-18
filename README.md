@@ -1,5 +1,32 @@
 # Dokumentation des Go-Projekts
 
+## Kubectl commands
+
+
+
+```bash
+kubectl apply -f auth-service-pod.yaml
+```
+```bash
+kubectl get pod product-service   
+```
+
+IPs:
+
+```bash
+kubectl get service
+```
+
+```bash
+kubctl apply - f manifest/deployment.yaml
+```
+
+Delete deployments
+
+```bash
+kubectl delete deployments.app nginx-deployment
+```
+
 ## Auth Paket
 
 Das `auth` Paket bietet Funktionen für die Authentifizierung von Benutzern.

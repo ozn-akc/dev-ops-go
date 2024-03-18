@@ -33,7 +33,7 @@ func AuthLoginHandler(w http.ResponseWriter, r *http.Request) {
 
 		if err != nil {
 			w.WriteHeader(http.StatusInternalServerError)
-			w.Write([]byte(`{"error": "Error generating the token"}`))
+			w.Write([]byte(`{"error": "Error generating the token!"}`))
 			return
 		}
 

@@ -26,7 +26,7 @@ func ProductListHandler(w http.ResponseWriter, r *http.Request) {
 	response, err := json.Marshal(products)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
-		w.Write([]byte(`{"error": "Internal Server Error"}`))
+		w.Write([]byte(`{"error": "Internal Server Error!"}`))
 		return
 	}
 

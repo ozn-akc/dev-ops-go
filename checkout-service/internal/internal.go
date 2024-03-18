@@ -24,7 +24,7 @@ func CheckoutPlaceOrderHandler(w http.ResponseWriter, r *http.Request) {
 
 	if pkg.VerifyToken(token) {
 		// In this simple example, we'll just return a success message
-		w.Write([]byte(`{"message": "Order placed successfully"}`))
+		w.Write([]byte(`{"message": "Order placed successfully!"}`))
 	} else {
 		w.WriteHeader(http.StatusUnauthorized)
 		w.Write([]byte(`{"error": "Invalid token"}`))

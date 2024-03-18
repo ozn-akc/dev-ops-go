@@ -15,7 +15,7 @@ type Product struct {
 
 // Static data for three products
 var products = []Product{
-	{ID: 1, Name: "T-Shirt", Price: 19.99},
+	{ID: 1, Name: "T Shirt", Price: 19.99},
 	{ID: 2, Name: "Hose", Price: 29.99},
 	{ID: 3, Name: "Raspberry Pi 4", Price: 39.99},
 }
